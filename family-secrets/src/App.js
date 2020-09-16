@@ -22,7 +22,7 @@ function App() {
           </Route> */}
         <Route exact path = "/login" component={Login} />
         <Route exact path = "/signup" component={Signup} />
-        <Route exact path = '/add-recipe' component={AddEditRecipe} />
+        <Route exact path = '/recipe' component={AddEditRecipe} />
         <Route exact path = '/dashboard' component={Dashboard} />
       </Switch>
     </div>

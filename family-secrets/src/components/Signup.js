@@ -103,6 +103,7 @@ function Signup() {
             type="text"
             name="username"
             id="username"
+            placeholder="Please enter your name"
             value={formState.username}
             onChange={inputChange}
           />
@@ -116,6 +117,7 @@ function Signup() {
             type="email"
             name="email"
             id="email"
+            placeholder="Enter your e-mail address"
             value={formState.email}
             onChange={inputChange}
           />
@@ -129,6 +131,7 @@ function Signup() {
             type="password"
             name="password"
             id="password"
+            placeholder="Please choose a password"
             value={formState.password}
             onChange={inputChange}
           />
@@ -142,6 +145,7 @@ function Signup() {
             type="password"
             name="confirm"
             id="confirm"
+            placeholder="Re-enter the password"
             value={formState.confirm}
             onChange={inputChange}
           />

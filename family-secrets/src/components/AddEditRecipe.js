@@ -3,35 +3,38 @@ import * as Yup from 'yup';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-const passwordRegex = RegExp(
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/
-);
+
 
 // setup formSchema
 const formSchema = Yup.object().shape({
-    username: Yup.string()
-        .min(6, 'Username must include at least 6 characters')
-        .required('Username must include at least 6 characters'),
-    email: Yup.string()
-        .required('You must provide an email address')
-        .email('This is not a valid email adress'),
-    password: Yup.string()
-        .matches(passwordRegex, 'At least one uppercase letter, one number, and 8 characters'),
-    confirm: Yup.string()
-        .required('Make sure the password match'),
-    terms: Yup.boolean()
-        .oneOf([true], "You must agree to the terms of use")
+    title: Yup.string()
+           .required('You must give this recipe a title'),
+    source: Yup.string()
+           .required('Enter where you got the recipe from'),
+    ingredients: Yup.string()
+           .required('What goes into the recipe?'),
+    instructions: Yup.string()
+           .required('How do you make this? What are the steps?'),
+    breakfast: Yup.boolean(),
+    lunch: Yup.boolean(),
+    dinner: Yup.boolean(),
+    dessert: Yup.boolean(),
+    vegetarian: Yup.boolean()
 });
 
 function Signup() {
     // setup state
     // form state
     const defaultState = {
-        username: '',
-        email: '',
-        password: '',
-        confirm: '',
-        terms: false
+       title: '',
+       source: '',
+       ingredients: '',
+       instructions: '',
+       breakfast: false,
+       lunch: false,
+       dinner: false,
+       dessert: false,
+       vegetarian: false
     }
     const [formState, setFormState] = useState(defaultState);
 
@@ -46,11 +49,15 @@ function Signup() {
 
     // error state
     const [errorState, setErrorState] = useState ({
-        username: '',
-        email: '',
-        password: '',
-        confirm: '',
-        terms: false
+        title: '',
+        source: '',
+        ingredients: '',
+        instructions: '',
+        breakfast: false,
+        lunch: false,
+        dinner: false,
+        dessert: false,
+        vegetarian: false
     });
 
     // setup validation
@@ -97,70 +104,117 @@ function Signup() {
 
     return (
         <form onSubmit={formSubmit}>
-        <label htmlFor="username">
-          Username
+        <label htmlFor="title">
+          Recipe title
           <input
             type="text"
-            name="username"
-            id="username"
-            value={formState.username}
+            name="title"
+            id="title"
+            placeholder="Give the recipe a name"
+            value={formState.title}
             onChange={inputChange}
           />
-        </label>
-        <label htmlFor="email">
-          Email
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={formState.email}
-            onChange={inputChange}
-          />
-          {errorState.email.length > 0 ? (
-            <p className="error">{errorState.email}</p>
+           {errorState.title.length > 0 ? (
+            <p className="error">{errorState.title}</p>
           ) : null}
         </label>
-        <label htmlFor="password">
-          Password
+        <label htmlFor="source">
+          Who/where is the recipe from?
           <input
-            type="password"
-            name="password"
-            id="password"
-            value={formState.password}
+            type="text"
+            name="source"
+            id="source"
+            placeholder="Where'd you get the recipe? e.g. Grandma"
+            value={formState.source}
             onChange={inputChange}
           />
-          {errorState.password.length > 0 ? (
-            <p className="error">{errorState.password}</p>
+          {errorState.source.length > 0 ? (
+            <p className="error">{errorState.source}</p>
           ) : null}
         </label>
-        <label htmlFor="confirm">
-          Confirm password
-          <input
-            type="password"
-            name="confirm"
-            id="confirm"
-            value={formState.confirm}
+         <label htmlFor="instructions">
+        Ingredients needed
+          <textarea
+            name="ingredients"
+            id="ingredients"
+            placeholder="1/2 cup butter, 4 eggs, etc."
+            value={formState.ingredients}
             onChange={inputChange}
           />
-          {errorState.confirm.length > 0 ? (
-            <p className="error">{errorState.confirm}</p>
-          ) : null}
+          {errorState.ingredients.length > 0 ? (
+              <p className="error">{errorState.ingredients}</p>
+            ) : null}
+        
         </label>
+      
+        <label htmlFor="instructions">
+          Enter the steps to make this recipe
+          <textarea
+            name="instructions"
+            id="instructions"
+            placeholder="Step 1: melt butter, Step 2: beat eggs, etc."
+            value={formState.instructions}
+            onChange={inputChange}
+          />
+          {errorState.instructions.length > 0 ? (
+              <p className="error">{errorState.instructions}</p>
+            ) : null}
+        
+      </label>
+      <label htmlFor="breakfast">
+        <input
+          type="checkbox"
+          id="breakfast"
+          name="breakfast"
+          checked={formState.breakfast}
+          onChange={inputChange}
+        />
+        Breakfast 
+    
+      </label>
+      <label htmlFor="lunch">
+        <input
+          type="checkbox"
+          id="lunch"
+          name="lunch"
+          checked={formState.lunch}
+          onChange={inputChange}
+        />
+        Lunch
+      </label>
+      <label htmlFor="dinner">
+        <input
+          type="checkbox"
+          id="dinner"
+          name="dinner"
+          checked={formState.dinner}
+          onChange={inputChange}
+        />
+        Dinner
+      </label>
+      <label htmlFor="dessert">
+        <input
+          type="checkbox"
+          id="dessert"
+          name="dessert"
+          checked={formState.dessert}
+          onChange={inputChange}
+        />
+        Dessert
+      </label>
+      <label htmlFor="vegetarian">
+        <input
+          type="checkbox"
+          id="vegetarian"
+          name="vegetarian"
+          checked={formState.vegetarian}
+          onChange={inputChange}
+        />
+        Vegetarian
+      </label>
 
         
-        <label htmlFor="terms">
-          <input
-            type="checkbox"
-            id="terms"
-            name="terms"
-            checked={formState.terms}
-            onChange={inputChange}
-          />
-          Terms & Conditions
-          {errorState.terms.length > 0 ? (
-            <p className="error">{errorState.terms}</p>
-          ) : null}
-        </label>
+       
         <button disabled={buttonDisabled}>Submit</button>
       </form>
     )

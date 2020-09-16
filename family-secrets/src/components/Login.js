@@ -90,6 +90,7 @@ function Signup() {
             type="text"
             name="username"
             id="username"
+            placeholder="Enter your username here"
             value={formState.username}
             onChange={inputChange}
           />
@@ -100,6 +101,7 @@ function Signup() {
             type="password"
             name="password"
             id="password"
+            placeholder="Enter your password here"
             value={formState.password}
             onChange={inputChange}
           />
@@ -111,7 +113,7 @@ function Signup() {
         <button disabled={buttonDisabled}>Submit</button>
       </form>
     )
-
+// This page needs an already a user, go to login link
 
 
 
