@@ -37,7 +37,7 @@ function Signup() {
 
 
     // button state
-    const [buttonDisabled, setButtonDisabled] = useState(defaultState);
+    const [buttonDisabled, setButtonDisabled] = useState(true);
     useEffect (() => {
         formSchema.isValid(formState).then(valid => {
             setButtonDisabled(!valid);
@@ -159,7 +159,7 @@ function Signup() {
             checked={formState.terms}
             onChange={inputChange}
           />
-          I agree to the Terms & Conditions
+          I agree to the Terms and Conditions
           {errorState.terms.length > 0 ? (
             <p className="error">{errorState.terms}</p>
           ) : null}

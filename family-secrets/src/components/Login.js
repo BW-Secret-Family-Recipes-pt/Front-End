@@ -10,17 +10,9 @@ const passwordRegex = RegExp(
 // setup formSchema
 const formSchema = Yup.object().shape({
     username: Yup.string()
-        .min(6, 'Username must include at least 6 characters')
-        .required('Username must include at least 6 characters'),
-    email: Yup.string()
-        .required('You must provide an email address')
-        .email('This is not a valid email adress'),
+        .required('Username is required'),
     password: Yup.string()
-        .matches(passwordRegex, 'At least one uppercase letter, one number, and 8 characters'),
-    confirm: Yup.string()
-        .required('Make sure the password match'),
-    terms: Yup.boolean()
-        .oneOf([true], "You must agree to the terms of use")
+        .required('Password is required'),
 });
 
 function Signup() {
@@ -28,11 +20,9 @@ function Signup() {
     // form state
     const defaultState = {
         username: '',
-        email: '',
         password: '',
-        confirm: '',
-        terms: false
     }
+    
     const [formState, setFormState] = useState(defaultState);
 
 
@@ -47,17 +37,14 @@ function Signup() {
     // error state
     const [errorState, setErrorState] = useState ({
         username: '',
-        email: '',
         password: '',
-        confirm: '',
-        terms: false
+        
     });
 
     // setup validation
     const validate = e => {
         // determine if checkbox 
-        let value =
-            e.target.type === "checkbox" ? e.target.checked : e.target.value;
+        let value = e.target.value;
         // yup validation
         Yup
             .reach(formSchema, e.target.name)
@@ -107,19 +94,6 @@ function Signup() {
             onChange={inputChange}
           />
         </label>
-        <label htmlFor="email">
-          Email
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={formState.email}
-            onChange={inputChange}
-          />
-          {errorState.email.length > 0 ? (
-            <p className="error">{errorState.email}</p>
-          ) : null}
-        </label>
         <label htmlFor="password">
           Password
           <input
@@ -133,34 +107,7 @@ function Signup() {
             <p className="error">{errorState.password}</p>
           ) : null}
         </label>
-        <label htmlFor="confirm">
-          Confirm password
-          <input
-            type="password"
-            name="confirm"
-            id="confirm"
-            value={formState.confirm}
-            onChange={inputChange}
-          />
-          {errorState.confirm.length > 0 ? (
-            <p className="error">{errorState.confirm}</p>
-          ) : null}
-        </label>
-
         
-        <label htmlFor="terms">
-          <input
-            type="checkbox"
-            id="terms"
-            name="terms"
-            checked={formState.terms}
-            onChange={inputChange}
-          />
-          Terms & Conditions
-          {errorState.terms.length > 0 ? (
-            <p className="error">{errorState.terms}</p>
-          ) : null}
-        </label>
         <button disabled={buttonDisabled}>Submit</button>
       </form>
     )
