@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
+
+// component imports
+import Login from './components/Login';
+import Signup from './components/Signup';
+import Dashboard from './components/Dashboard';
+import AddEditRecipe from './components/AddEditRecipe';
+// other imports to come
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch>
+        {/* Basic routes added for forms pages, others to come */}
+        {/* <Route exact path = "/" 
+        component={() => {
+          window.location.href = 'http://localhost:3000'
+          return null;
+        }}>
+          </Route> */}
+        <Route exact path = "/login" component={Login} />
+        <Route exact path = "/signup" component={Signup} />
+        <Route exact path = '/add-recipe' component={AddEditRecipe} />
+        <Route exact path = '/dashboard' component={Dashboard} />
+      </Switch>
     </div>
   );
-}
+};
 
 export default App;
