@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
 import AddEditRecipe from './components/AddEditRecipe';
+import UserAccount from './components/UserAccount';
 // other imports to come
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route exact path = "/signup" component={Signup} />
         <Route exact path = '/recipe' component={AddEditRecipe} />
         <Route exact path = '/dashboard' component={Dashboard} />
+        <Route exact path = '/user-account' component={UserAccount}
       </Switch>
     </div>
   );
