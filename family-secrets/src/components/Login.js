@@ -111,9 +111,10 @@ function Signup() {
         </label>
         
         <button disabled={buttonDisabled}>Submit</button>
+        <p>New to Secret Family Recipes? <Link to='/signup'>Create an account</Link></p>
       </form>
     )
-// This page needs an already a user, go to login link
+
 
 
 

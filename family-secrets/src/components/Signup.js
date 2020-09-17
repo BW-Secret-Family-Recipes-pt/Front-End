@@ -169,6 +169,7 @@ function Signup() {
           ) : null}
         </label>
         <button disabled={buttonDisabled}>Submit</button>
+        <p>Already a user? <Link to='/login'>Log in</Link></p>
       </form>
     )
 

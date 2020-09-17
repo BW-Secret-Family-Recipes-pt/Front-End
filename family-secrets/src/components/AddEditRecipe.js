@@ -34,7 +34,8 @@ function Signup() {
        lunch: false,
        dinner: false,
        dessert: false,
-       vegetarian: false
+       vegetarian: false,
+       id: Date.now()
     }
     const [formState, setFormState] = useState(defaultState);
 

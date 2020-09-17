@@ -10,7 +10,49 @@ import AddEditRecipe from './components/AddEditRecipe';
 import UserAccount from './components/UserAccount';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import RecipeCard from './components/RecipeCard';
+
 // other imports to come
+
+// the temp database to create Dashboard and RecipeCard
+const testRecipes = [
+  {
+    title: 'chicken parm',
+    source: 'nonna',
+    ingredients: '2 lbs chicken, lots of mozz, jar of sauce',
+    instructions: 'cut chicken into small pieces, bread, fry, broil',
+    breakfast: false,
+    lunch: true,
+    dinner: true,
+    dessert: false,
+    vegetarian: false,
+    id: 1
+  },
+  {
+    title: 'cereal',
+    source: 'Mikey',
+    ingredients: 'Life',
+    instructions: 'Open box, pour in bowl, add milk',
+    breakfast: true,
+    lunch: false,
+    dinner: false,
+    dessert: false,
+    vegetarian: false,
+    id: 2
+  },
+  {
+    title: 'ommie',
+    source: 'mommy',
+    ingredients: 'eggs, cheese, bacon, moar cheese',
+    instructions: 'break eggs, throw stuff in',
+    breakfast: true,
+    lunch: true,
+    dinner: true,
+    dessert: false,
+    vegetarian: false,
+    id: 3
+  },
+];
 
 function App() {
   return (
@@ -29,7 +71,9 @@ function App() {
         <Route exact path = '/recipe' component={AddEditRecipe} />
         <Route exact path = '/dashboard' component={Dashboard} />
         <Route exact path = '/user-account' component={UserAccount} />
+        <Route path = '/recipe/:id' component={RecipeCard} />
       </Switch>
+      <Dashboard props={testRecipes} />
       <Footer />
     </div>
   );
