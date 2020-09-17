@@ -8,11 +8,14 @@ import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
 import AddEditRecipe from './components/AddEditRecipe';
 import UserAccount from './components/UserAccount';
+import Header from './components/Header';
+import Footer from './components/Footer';
 // other imports to come
 
 function App() {
   return (
     <div className="App">
+      <Header />
       <Switch>
         {/* Basic routes added for forms pages, others to come */}
         {/* <Route exact path = "/" 
@@ -27,6 +30,7 @@ function App() {
         <Route exact path = '/dashboard' component={Dashboard} />
         <Route exact path = '/user-account' component={UserAccount} />
       </Switch>
+      <Footer />
     </div>
   );
 };
