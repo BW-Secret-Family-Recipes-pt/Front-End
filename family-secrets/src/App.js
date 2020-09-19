@@ -69,11 +69,11 @@ function App() {
         <Route exact path = "/login" component={Login} />
         <Route exact path = "/signup" component={Signup} />
         <Route exact path = '/recipe' component={AddEditRecipe} />
-        <Route exact path = '/dashboard' component={Dashboard} />
+        <Route exact path = '/' component={Dashboard} />
         <Route exact path = '/user-account' component={UserAccount} />
         <Route path = '/recipe/:id' component={RecipeCard} />
       </Switch>
-      <Dashboard props={testRecipes} />
+      
       <Footer />
     </div>
   );
