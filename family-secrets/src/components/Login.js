@@ -73,6 +73,12 @@ function Signup(props) {
         setFormState({ ...formState, [e.target.name]: value });
     };
 
+    // submit handler replaced with actual API 
+    // we need user that logged on
+    // we need to get token back
+    // Liz probably does this?
+
+
     // setup submit function with temp API
     const formSubmit = e => {
         e.preventDefault();
