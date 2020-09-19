@@ -16,6 +16,7 @@ const formSchema = Yup.object().shape({
         .required('You must provide an email address')
         .email('This is not a valid email adress'),
     password: Yup.string()
+    // comment this out for testing
         .matches(passwordRegex, 'At least one uppercase letter, one number, and 8 characters'),
     confirm: Yup.string()
         .required('Make sure the passwords match'),
@@ -87,6 +88,7 @@ function Signup() {
     };
 
     // setup submit function with temp API
+    // obviously replace this with real API -- Liz
     const formSubmit = e => {
         e.preventDefault();
         axios  

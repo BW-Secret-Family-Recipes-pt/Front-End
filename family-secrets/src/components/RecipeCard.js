@@ -8,6 +8,9 @@ import React from 'react';
 // and it needs a database pull to grab the data to make it work
 // plus the params hook
 
+// Is Brittany going to flesh this out ??
+
+
 const RecipeCard = (props) => {
   console.log (props);
 
