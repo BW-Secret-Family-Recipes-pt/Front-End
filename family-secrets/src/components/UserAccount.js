@@ -1,5 +1,7 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const UserAccount = () => {
     /* CRUD -
@@ -15,11 +17,14 @@ const UserAccount = () => {
         id: '',
     });
 
+    const {id} = useParams();
+
     useEffect(() => {
-        Axios
-            .get('https://reqres.in/api/users/2')
+        axiosWithAuth()
+            .get(`https://family-secret.herokuapp.com/api/users/${id}`)
             .then(res => {
-                setUser(res.data.data);
+                console.log(res)
+                // setUser(res.data.data);
             })
             .catch(err => console.log(err));
     }, []);
