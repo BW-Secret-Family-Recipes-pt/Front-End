@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const passwordRegex = RegExp(
@@ -15,7 +15,7 @@ const formSchema = Yup.object().shape({
         .required('Password is required'),
 });
 
-function Signup() {
+function Signup(props) {
     // setup state
     // form state
     const defaultState = {
@@ -77,8 +77,12 @@ function Signup() {
     const formSubmit = e => {
         e.preventDefault();
         axios  
-            .post("http://reqres.in/api/users", formState)
-            .then(response => console.log(response))
+            .post("https://family-secret.herokuapp.com/api/login", formState)
+            .then(response => {
+                console.log(response.data)
+                localStorage.setItem('token', response.data.token)
+                // props.history.push('/')
+            })
             .catch(err => console.log(err));
     };
 
