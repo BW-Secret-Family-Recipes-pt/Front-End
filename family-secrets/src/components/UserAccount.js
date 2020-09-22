@@ -1,6 +1,5 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const UserAccount = () => {
@@ -17,13 +16,13 @@ const UserAccount = () => {
         id: '',
     });
 
-    const {id} = useParams();
+    const id = 1;
 
     useEffect(() => {
         axiosWithAuth()
             .get(`https://family-secret.herokuapp.com/api/users/${id}`)
             .then(res => {
-                console.log(res)
+                console.log(res);
                 // setUser(res.data.data);
             })
             .catch(err => console.log(err));
