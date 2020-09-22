@@ -11,6 +11,7 @@ import UserAccount from './components/UserAccount';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import RecipeCard from './components/RecipeCard';
+import PrivateRoute from './utils/PrivateRoute';
 
 // other imports to come
 
@@ -69,11 +70,16 @@ function App() {
         <Route exact path = "/login" component={Login} />
         <Route exact path = "/signup" component={Signup} />
         <Route exact path = '/recipe' component={AddEditRecipe} />
+<<<<<<< HEAD
         <Route exact path = '/dashboard' component={Dashboard} />
         <Route exact path = '/user-account/:id' component={UserAccount} />
+=======
+        <Route exact path = '/' component={Dashboard} />
+        <PrivateRoute exact path = '/user-account' component={UserAccount} />
+>>>>>>> 59cc2950e5e6c93c536b89468f00f595c6b790a0
         <Route path = '/recipe/:id' component={RecipeCard} />
       </Switch>
-      <Dashboard props={testRecipes} />
+      
       <Footer />
     </div>
   );

@@ -1,5 +1,9 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
+=======
+import { useParams } from 'react-router-dom';
+>>>>>>> 59cc2950e5e6c93c536b89468f00f595c6b790a0
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const UserAccount = () => {
@@ -16,13 +20,21 @@ const UserAccount = () => {
         id: '',
     });
 
+<<<<<<< HEAD
     const id = 1;
+=======
+    const {id} = useParams();
+>>>>>>> 59cc2950e5e6c93c536b89468f00f595c6b790a0
 
     useEffect(() => {
         axiosWithAuth()
             .get(`https://family-secret.herokuapp.com/api/users/${id}`)
             .then(res => {
+<<<<<<< HEAD
                 console.log(res);
+=======
+                console.log(res)
+>>>>>>> 59cc2950e5e6c93c536b89468f00f595c6b790a0
                 // setUser(res.data.data);
             })
             .catch(err => console.log(err));

@@ -7,7 +7,14 @@ import axios from 'axios';
 // current 'props' is canned data stored in app
 // must replace with pulled data via axios
 
+// do we need an id value
+// can we just do this by name
+// should we it the api here or can we just pass the invidual recipe?
+
+// do axios GET request here for recipe data
+
 const Dashboard = props => {
+  // may require change here
   const data = props.props;
 
 return (
