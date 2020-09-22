@@ -70,8 +70,8 @@ function App() {
         <Route exact path = "/login" component={Login} />
         <Route exact path = "/signup" component={Signup} />
         <Route exact path = '/recipe' component={AddEditRecipe} />
-        <Route exact path = '/' component={Dashboard} />
-        <PrivateRoute exact path = '/user-account' component={UserAccount} />
+        <Route exact path = '/' component={Dashboard} props={testRecipes}/>
+        <PrivateRoute exact path = '/user' component={UserAccount} />
         <Route path = '/recipe/:id' component={RecipeCard} />
       </Switch>
       
