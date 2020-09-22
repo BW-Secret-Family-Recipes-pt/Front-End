@@ -92,7 +92,7 @@ function Signup() {
     const formSubmit = e => {
         e.preventDefault();
         axios  
-            .post("http://reqres.in/api/users", formState)
+            .post("https://family-secret.herokuapp.com/api/register", formState)
             .then(response => console.log(response))
             .catch(err => console.log(err));
     };
