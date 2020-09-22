@@ -88,8 +88,9 @@ return (
 
 const Dash = styled.div`
     text-align:center;
+    height:80vh;
     h1{
-      font-family: 'Satisfy', cursive;
+      font-family: 'Playfair Display', serif;
       font-size:3rem;
       font-weight:lighter;
     }
