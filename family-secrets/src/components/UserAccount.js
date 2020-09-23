@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { id } from '../utils/ParseLocalStorage';
 
 const UserAccount = () => {
     /* CRUD -
@@ -15,8 +16,12 @@ const UserAccount = () => {
         id: '',
     });
 
-    const userID = JSON.parse(localStorage.getItem('user'));
-    const id = userID.id;
+    // let id = ''
+
+    // if (localStorage.getItem('user')) {
+    // const userID = JSON.parse(localStorage.getItem('user'));
+    // id = userID.id;
+    // }
 
     useEffect(() => {
         axiosWithAuth()

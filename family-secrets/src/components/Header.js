@@ -1,12 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { id } from '../utils/ParseLocalStorage';
 
 
 function Header () {
+    
+    // let id = ''
 
-    const userID = JSON.parse(localStorage.getItem('user'));
-    const id = userID.id;
+    // if (localStorage.getItem('user')) {
+    // const userID = JSON.parse(localStorage.getItem('user'));
+    // id = userID.id;
+    // }
 
     return(
         <HeaderDiv>
