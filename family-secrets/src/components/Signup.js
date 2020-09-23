@@ -18,10 +18,10 @@ const formSchema = Yup.object().shape({
     password: Yup.string()
     // comment this out for testing
         .matches(passwordRegex, 'At least one uppercase letter, one number, and 8 characters'),
-    confirm: Yup.string()
-        .required('Make sure the passwords match'),
-    terms: Yup.boolean()
-        .oneOf([true], "You must agree to the terms of use")
+    // confirm: Yup.string()
+    //     .required('Make sure the passwords match'),
+    // terms: Yup.boolean()
+        // .oneOf([true], "You must agree to the terms of use")
 });
 
 function Signup() {
@@ -31,8 +31,8 @@ function Signup() {
         username: '',
         email: '',
         password: '',
-        confirm: '',
-        terms: false
+        // confirm: '',
+        // terms: false
     }
     const [formState, setFormState] = useState(defaultState);
 
@@ -50,8 +50,8 @@ function Signup() {
         username: '',
         email: '',
         password: '',
-        confirm: '',
-        terms: false
+        // confirm: '',
+        // terms: false
     });
 
     // setup validation
@@ -141,7 +141,8 @@ function Signup() {
             <p className="error">{errorState.password}</p>
           ) : null}
         </label>
-        <label htmlFor="confirm">
+       
+        {/* <label htmlFor="confirm">
           Confirm password
           <input
             type="password"
@@ -169,7 +170,7 @@ function Signup() {
           {errorState.terms.length > 0 ? (
             <p className="error">{errorState.terms}</p>
           ) : null}
-        </label>
+        </label> */}
         <button disabled={buttonDisabled}>Submit</button>
         <p>Already a user? <Link to='/login'>Log in</Link></p>
       </form>
