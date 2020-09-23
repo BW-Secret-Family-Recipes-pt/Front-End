@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
@@ -56,6 +56,7 @@ const testRecipes = [
 ];
 
 function App() {
+
   return (
     <div className="App">
       <Header />
@@ -71,10 +72,9 @@ function App() {
         <Route exact path = "/signup" component={Signup} />
         <Route exact path = '/recipe' component={AddEditRecipe} />
         <Route exact path = '/' component={Dashboard} props={testRecipes}/>
-        <PrivateRoute exact path = '/user' component={UserAccount} />
+        <PrivateRoute exact path = '/user/:id' component={UserAccount} />
         <Route path = '/recipe/:id' component={RecipeCard} />
       </Switch>
-      
       <Footer />
     </div>
   );
