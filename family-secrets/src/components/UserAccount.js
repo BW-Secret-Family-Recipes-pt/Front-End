@@ -15,8 +15,12 @@ const UserAccount = () => {
         id: '',
     });
 
+    let id = ''
+
+    if (localStorage.getItem('user')) {
     const userID = JSON.parse(localStorage.getItem('user'));
-    const id = userID.id;
+    id = userID.id;
+    }
 
     useEffect(() => {
         axiosWithAuth()

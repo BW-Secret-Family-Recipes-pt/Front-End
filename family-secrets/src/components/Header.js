@@ -2,11 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-
 function Header () {
+    
+    let id = ''
 
+    if (localStorage.getItem('user')) {
     const userID = JSON.parse(localStorage.getItem('user'));
-    const id = userID.id;
+    id = userID.id;
+    }
 
     return(
         <HeaderDiv>

@@ -89,7 +89,7 @@ function Signup(props) {
 
                 const user = {
                     token: response.data.token,
-                    id: response.data.user.id,
+                    id: response.data.user_id,
                 }
 
                 localStorage.setItem('user', JSON.stringify(user))
