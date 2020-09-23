@@ -5,12 +5,15 @@ import { Link } from 'react-router-dom';
 
 function Header () {
 
+    const userID = JSON.parse(localStorage.getItem('user'));
+    const id = userID.id;
+
     return(
         <HeaderDiv>
             <div className="logo">Secret Family Recipe Cookbook</div>
             <div className="nav">
                 <div className="navbutton"><Link to="/recipe" className="headerLinks">Add Article</Link></div>
-                <div className="navbutton"><Link to="/user" className="headerLinks">Profile</Link></div>
+                <div className="navbutton"><Link to={`/user/${id}`} className="headerLinks">Profile</Link></div>
             </div>
         </HeaderDiv>
     )

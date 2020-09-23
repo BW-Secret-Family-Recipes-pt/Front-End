@@ -11,22 +11,22 @@ const UserAccount = () => {
 
     const [user, setUser] = useState({
         email: '',
-        first_name: '',
-        last_name: '',
+        username: '',
         id: '',
     });
 
-    const id = 1;
+    const userID = JSON.parse(localStorage.getItem('user'));
+    const id = userID.id;
 
     useEffect(() => {
         axiosWithAuth()
             .get(`https://family-secret.herokuapp.com/api/users/${id}`)
             .then(res => {
                 console.log(res);
-                // setUser(res.data.data);
+                setUser(res.data);
             })
             .catch(err => console.log(err));
-    }, []);
+    }, [id]);
 
     const changeHandler = e => {
         setUser({
@@ -53,13 +53,9 @@ const UserAccount = () => {
     return(
         <>
             <form onSubmit={submitHandler}>
-                <label htmlFor='first_name'>
-                    First Name: 
-                    <input name='first_name' type='text' value={user.first_name} onChange={changeHandler} />
-                </label>
-                <label htmlFor='last_name'>
-                    Last Name: 
-                    <input name='last_name' type='text' value={user.last_name} onChange={changeHandler} />
+                <label htmlFor='username'>
+                    User Name: 
+                    <input name='username' type='text' value={user.username} onChange={changeHandler} />
                 </label>
                 <label htmlFor='email'>
                     Email: 
