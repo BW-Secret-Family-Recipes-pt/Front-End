@@ -1,10 +1,15 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { token } from './ParseLocalStorage';
 
 const PrivateRoute = ({component: Component, ...rest}) => {
-    // const userID = JSON.parse(localStorage.getItem('user'));
-    // const token = userID.token;
+    
+    let token = ''
+
+    if (localStorage.getItem('user')) {
+    const userID = JSON.parse(localStorage.getItem('user'));
+    token = userID.token;
+    }
+
     return (
         <Route
             {...rest}
