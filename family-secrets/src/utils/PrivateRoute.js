@@ -2,11 +2,20 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 const PrivateRoute = ({component: Component, ...rest}) => {
+    
+    let token = ''
+
+    if (localStorage.getItem('user')) {
+    const userID = JSON.parse(localStorage.getItem('user'));
+    console.log('uid', userID);
+    token = userID.token;
+    }
+
     return (
         <Route
             {...rest}
             render={(props) => {
-                if(localStorage.getItem('token')) {
+                if(token !== '') {
                     return <Component {...props} /> 
                 } else {
                     return <Redirect to='/' />

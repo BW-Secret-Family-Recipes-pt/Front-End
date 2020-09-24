@@ -85,11 +85,13 @@ function Signup(props) {
         axios  
             .post("https://family-secret.herokuapp.com/api/login", formState)
             .then(response => {
+
                 console.log(response.data)
                 localStorage.setItem('token', response.data.token)
                 props.history.push('/dashboard')
                 //this needs to stay like this for the moment because messing things here 
                 //causes the login to break.
+
             })
             .catch(err => console.log(err));
     };
