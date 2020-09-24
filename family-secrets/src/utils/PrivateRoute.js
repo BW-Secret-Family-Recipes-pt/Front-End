@@ -7,6 +7,7 @@ const PrivateRoute = ({component: Component, ...rest}) => {
 
     if (localStorage.getItem('user')) {
     const userID = JSON.parse(localStorage.getItem('user'));
+    console.log('uid', userID);
     token = userID.token;
     }
 
@@ -14,7 +15,7 @@ const PrivateRoute = ({component: Component, ...rest}) => {
         <Route
             {...rest}
             render={(props) => {
-                if(token) {
+                if(token !== '') {
                     return <Component {...props} /> 
                 } else {
                     return <Redirect to='/login' />
