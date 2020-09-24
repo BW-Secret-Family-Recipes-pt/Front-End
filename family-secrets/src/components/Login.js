@@ -90,16 +90,14 @@ function Signup(props) {
                 localStorage.setItem('token', response.data.token)
                 props.history.push('/dashboard')
 
-              //  const user = {
-                //    token: response.data.token,
-                //    id: response.data.user_id,
-               // }
+                const user = {
+                    token: response.data.token,
+                    id: response.data.user_id,
+                }
 
-               // localStorage.setItem('user', JSON.stringify(user))
+                localStorage.setItem('user', JSON.stringify(user))
 
-               // console.log(props.history)
-
-               // props.history.push('/', user.id);
+                props.history.push('/', user.id);
 
             })
             .catch(err => console.log(err));
