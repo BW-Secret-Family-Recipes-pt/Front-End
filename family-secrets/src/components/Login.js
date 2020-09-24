@@ -85,18 +85,22 @@ function Signup(props) {
         axios  
             .post("https://family-secret.herokuapp.com/api/login", formState)
             .then(response => {
-                console.log(response.data);
 
-                const user = {
-                    token: response.data.token,
-                    id: response.data.user_id,
-                }
+                console.log(response.data)
+                localStorage.setItem('token', response.data.token)
+                props.history.push('/dashboard')
 
-                localStorage.setItem('user', JSON.stringify(user))
+              //  const user = {
+                //    token: response.data.token,
+                //    id: response.data.user_id,
+               // }
 
-                console.log(props.history)
+               // localStorage.setItem('user', JSON.stringify(user))
 
-                props.history.push('/', user.id);
+               // console.log(props.history)
+
+               // props.history.push('/', user.id);
+
             })
             .catch(err => console.log(err));
     };

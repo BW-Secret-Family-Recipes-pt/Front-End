@@ -8,8 +8,9 @@ function Footer () {
         <FooterDiv>
             <Link to="/" className="LinkBottom"><span className="logoBottom">Secret Family Secrets Cookbook</span></Link>
             <div className="links">
-                <Link to="/login">Login</Link>
-                <Link to="/recipe">Add A Recipe</Link>
+                <Link to="/">Login</Link>
+                <Link to="/dashboard">Current Recipes</Link>
+                <Link to="/addrecipe">Add A Recipe</Link>
                 <a href="https://htmlpreview.github.io/?https://github.com/BW-Secret-Family-Recipes-pt/Marketing-Page/blob/marketing/aboutblog/about.html" alt="About">About</a>
                 <a href="https://htmlpreview.github.io/?https://github.com/BW-Secret-Family-Recipes-pt/Marketing-Page/blob/marketing/aboutblog/blog.html" alt="Check out our blog!">Blog</a>
             </div>
