@@ -1,7 +1,13 @@
 const { default: Axios } = require("axios");
 
 export const axiosWithAuth = () => {
-    const token = localStorage.getItem('token');
+    
+    let token = ''
+
+    if (localStorage.getItem('user')) {
+    const userID = JSON.parse(localStorage.getItem('user'));
+    token = userID.token;
+    }
 
     return Axios.create({
         baseURL: 'https://family-secret.herokuapp.com/', 
