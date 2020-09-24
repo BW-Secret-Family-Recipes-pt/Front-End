@@ -12,7 +12,6 @@ const UserAccount = () => {
     const [user, setUser] = useState({
         email: '',
         username: '',
-        id: '',
     });
 
     let id = ''
@@ -42,14 +41,14 @@ const UserAccount = () => {
     const submitHandler = e => {
         e.preventDefault();
         Axios
-            .put(`https://reqres.in/api/users/${user.id}`, user)
+            .put(`https://family-secret.herokuapp.com/api/users/${id}`, user)
             .then(res => console.log(res))
             .catch(err => console.log(err));
     }
 
     const deleteHandler = () => {
         Axios
-        .delete(`https://reqres.in/api/users/${user.id}`, user)
+        .delete(`https://family-secret.herokuapp.com/api/users/${id}`, user)
         .then(res => console.log(res))
         .catch(err => console.log(err))
     }
