@@ -4,6 +4,7 @@ import RecipeCard from './RecipeCard';
 import axios from 'axios';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
 import styled from 'styled-components';
+import image from '../images/woodback.jpg';
 
 // super crude dashboard for listing recipes
 // current 'props' is canned data stored in app
@@ -64,10 +65,11 @@ const Dashboard = props => {
       id: 3
     },
   ];
-  
+ 
 return (
-  <Dash className="recipe-list">
-    <h1>Recipe List</h1>
+  <Dash className="recipe-list" style={{backgroundImage:"url(" + image + ")"}}>
+    <h1><span>What's cooking?</span></h1>
+    <h2 className="smallText">Choose one of our delicious recipes to cook today!</h2>
     <div className="sections">
     {data.map(recipe => (
       <div className="recipe" key={recipe.id}>
@@ -88,11 +90,34 @@ return (
 
 const Dash = styled.div`
     text-align:center;
+    position:relative;
+    margin-top:-35px;
     height:80vh;
+    background-position:0% 35%;
+    background-size:cover;
+    z-index:3;
     h1{
-      font-family: 'Playfair Display', serif;
+      font-family: 'Satisfy', serif;
       font-size:3rem;
+      font-weight:bolder;
+      color:#4a3f35;
+      opacity:0.8;
+      padding-top:6%;
       font-weight:lighter;
+      
+      span{
+        background-color:white;
+        padding:2%;
+        border-radius:50% 50% 50% 50% / 49% 49% 51% 51%  ;
+        box-shadow:0px 15px 15px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+    }
+    .smallText{
+      margin-top:-40px;
+      font-size:.5rem;
+      font-weight:lighter;
+      color:black;
+      z-index:8;
     }
     .sections{
     display:flex;
@@ -103,11 +128,13 @@ const Dash = styled.div`
     
     .recipe{
       width:25vw;
-      height:25vw;
+      white-space:normal;
+      background-color:white;
+      opacity:0.8;
       border-radius:2px;
       margin:2%;
       padding:2%;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       
       
     .Link{
