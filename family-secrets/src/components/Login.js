@@ -94,7 +94,9 @@ function Signup(props) {
 
                 localStorage.setItem('user', JSON.stringify(user))
 
-                props.history.push('/');
+                console.log(props.history)
+
+                props.history.push('/', user.id);
             })
             .catch(err => console.log(err));
     };

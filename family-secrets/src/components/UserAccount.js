@@ -2,7 +2,7 @@ import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-const UserAccount = () => {
+const UserAccount = (props) => {
     /* CRUD -
     create - will be in the registration form
     read will be here, in the form of showing the user his account details
@@ -14,12 +14,12 @@ const UserAccount = () => {
         username: '',
     });
 
-    let id = ''
+    // let id = ''
 
-    if (localStorage.getItem('user')) {
+    // if (localStorage.getItem('user')) {
     const userID = JSON.parse(localStorage.getItem('user'));
-    id = userID.id;
-    }
+    const id = userID.id;
+    // }
 
     useEffect(() => {
         axiosWithAuth()
@@ -51,6 +51,9 @@ const UserAccount = () => {
         .delete(`https://family-secret.herokuapp.com/api/users/${id}`, user)
         .then(res => console.log(res))
         .catch(err => console.log(err))
+
+        props.history.push('/');
+        localStorage.removeItem('user');
     }
 
     return(

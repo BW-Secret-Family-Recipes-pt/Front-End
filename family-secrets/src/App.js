@@ -73,6 +73,7 @@ function App() {
         <Route exact path = '/recipe' component={AddEditRecipe} />
         <Route exact path = '/' component={Dashboard} props={testRecipes}/>
         <PrivateRoute exact path = '/user/:id' component={UserAccount} />
+        <PrivateRoute exact path = '/user' component={UserAccount} />
         <Route path = '/recipe/:id' component={RecipeCard} />
       </Switch>
       <Footer />
