@@ -9,7 +9,7 @@ function Header () {
         <HeaderDiv>
             <div className="logo">Secret Family Recipe Cookbook</div>
             <div className="nav">
-                <div className="navbutton"><Link to="/recipe" className="headerLinks">Add Article</Link></div>
+                <div className="navbutton"><Link to="/addrecipe" className="headerLinks">Add Article</Link></div>
                 <div className="navbutton"><Link to="/user" className="headerLinks">Profile</Link></div>
             </div>
         </HeaderDiv>

@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import RecipeCard from './RecipeCard';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
 import styled from 'styled-components';
 import image from '../images/woodback.jpg';
@@ -15,14 +13,24 @@ import image from '../images/woodback.jpg';
 // should we it the api here or can we just pass the invidual recipe?
 
 // do axios GET request here for recipe data
-
+const initialRecipeState = [{
+  title:'',
+  source:'',
+  ingredients:'',
+  instructions:'',
+  category:'',
+  user_id:0,
+  id:0
+}]
 const Dashboard = props => {
-  // may require change here
+  const [newData, setNewData] = useState(initialRecipeState);
   useEffect(() => {
     axiosWithAuth()
         .get("api/recipes")
         .then(res => {
-            console.log(res)
+            console.log(res.data)
+          setNewData(res.data);
+          
         })
         .catch(err => console.log(err));
 }, []);
@@ -65,13 +73,13 @@ const Dashboard = props => {
       id: 3
     },
   ];
- 
+  console.log('this is coming from the state in dashboard', newData)
 return (
   <Dash className="recipe-list" style={{backgroundImage:"url(" + image + ")"}}>
     <h1><span>What's cooking?</span></h1>
     <h2 className="smallText">Choose one of our delicious recipes to cook today!</h2>
     <div className="sections">
-    {data.map(recipe => (
+    {newData.map(recipe => (
       <div className="recipe" key={recipe.id}>
         <Link to={`/recipe/${recipe.id}`} className="Link">
              <h2>{recipe.title}</h2>

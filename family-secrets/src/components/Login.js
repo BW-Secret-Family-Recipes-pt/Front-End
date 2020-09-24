@@ -87,7 +87,7 @@ function Signup(props) {
             .then(response => {
                 console.log(response.data)
                 localStorage.setItem('token', response.data.token)
-                // props.history.push('/')
+                props.history.push('/dashboard')
             })
             .catch(err => console.log(err));
     };
