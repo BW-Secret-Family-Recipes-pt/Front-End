@@ -67,10 +67,10 @@ function App() {
           return null;
         }}>
           </Route> */}
-        <Route exact path = "/login" component={Login} />
+        <Route exact path = "/" component={Login} />
         <Route exact path = "/signup" component={Signup} />
         <Route exact path = '/recipe' component={AddEditRecipe} />
-        <Route exact path = '/' component={Dashboard} props={testRecipes}/>
+        <Route exact path = '/' component={Dashboard}/>
         <PrivateRoute exact path = '/user' component={UserAccount} />
         <Route path = '/recipe/:id' component={RecipeCard} />
       </Switch>
