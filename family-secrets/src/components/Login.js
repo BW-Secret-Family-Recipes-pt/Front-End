@@ -88,6 +88,8 @@ function Signup(props) {
                 console.log(response.data)
                 localStorage.setItem('token', response.data.token)
                 props.history.push('/dashboard')
+                //this needs to stay like this for the moment because messing things here 
+                //causes the login to break.
             })
             .catch(err => console.log(err));
     };
