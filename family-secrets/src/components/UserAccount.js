@@ -2,7 +2,7 @@ import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-const UserAccount = () => {
+const UserAccount = (props) => {
     /* CRUD -
     create - will be in the registration form
     read will be here, in the form of showing the user his account details
@@ -11,22 +11,25 @@ const UserAccount = () => {
 
     const [user, setUser] = useState({
         email: '',
-        first_name: '',
-        last_name: '',
-        id: '',
+        username: '',
     });
 
-    const id = 1;
+    // let id = ''
+
+    // if (localStorage.getItem('user')) {
+    const userID = JSON.parse(localStorage.getItem('user'));
+    const id = userID.id;
+    // }
 
     useEffect(() => {
         axiosWithAuth()
             .get(`https://family-secret.herokuapp.com/api/users/${id}`)
             .then(res => {
                 console.log(res);
-                // setUser(res.data.data);
+                setUser(res.data);
             })
             .catch(err => console.log(err));
-    }, []);
+    }, [id]);
 
     const changeHandler = e => {
         setUser({
@@ -38,28 +41,27 @@ const UserAccount = () => {
     const submitHandler = e => {
         e.preventDefault();
         Axios
-            .put(`https://reqres.in/api/users/${user.id}`, user)
+            .put(`https://family-secret.herokuapp.com/api/users/${id}`, user)
             .then(res => console.log(res))
             .catch(err => console.log(err));
     }
 
     const deleteHandler = () => {
         Axios
-        .delete(`https://reqres.in/api/users/${user.id}`, user)
+        .delete(`https://family-secret.herokuapp.com/api/users/${id}`, user)
         .then(res => console.log(res))
         .catch(err => console.log(err))
+
+        props.history.push('/');
+        localStorage.removeItem('user');
     }
 
     return(
         <>
             <form onSubmit={submitHandler}>
-                <label htmlFor='first_name'>
-                    First Name: 
-                    <input name='first_name' type='text' value={user.first_name} onChange={changeHandler} />
-                </label>
-                <label htmlFor='last_name'>
-                    Last Name: 
-                    <input name='last_name' type='text' value={user.last_name} onChange={changeHandler} />
+                <label htmlFor='username'>
+                    User Name: 
+                    <input name='username' type='text' value={user.username} onChange={changeHandler} />
                 </label>
                 <label htmlFor='email'>
                     Email: 
