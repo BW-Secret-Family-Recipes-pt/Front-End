@@ -87,7 +87,14 @@ function Signup(props) {
             .then(response => {
 
                 console.log(response.data)
-                localStorage.setItem('token', response.data.token)
+                // localStorage.setItem('token', response.data.token)
+
+                const user = {
+                    token: response.data.token,
+                    id: response.data.user_id,
+                }
+
+                localStorage.setItem('user', JSON.stringify(user))
                 props.history.push('/dashboard')
                 //this needs to stay like this for the moment because messing things here 
                 //causes the login to break
